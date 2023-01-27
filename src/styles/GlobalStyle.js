@@ -1,33 +1,37 @@
-import { createGlobalStyle } from "styled-components";
-// import "@fontsource/sirin-stencil";
-// import "@fontsource/kaushan-script";
+import { createGlobalStyle, css } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
-   
-    *,*::before,*::after{
+const fontStyle = css`
+  color: ${({ theme }) => theme.primaryText};
+  line-height: 1.5;
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`;
+
+export default createGlobalStyle`
+  * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-  
-    }
-  body {
-    /* font-family: "Sirin Stencil"; */
- 
-    color: ${(props) => (props.darkMode ? "white" : "black")};
-
-    margin: 0 auto;  
-    overflow-x: hidden;
+    outline: 0;
   }
-h1,h3,h4,h5,h6{
-    margin: 0;
-    padding: 0;    
-}
-a {
-    color:inherit;
-    text-decoration:none;
-}
 
-input {
-  display: block;
-};
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: 'Noto Sans', monospace;
+    background: ${({ theme }) => theme.background};
+    ${fontStyle}
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  textarea, input, button {
+    font-family: 'Noto Sans', monospace;
+    ${fontStyle}
+  }
 `;
-export default GlobalStyles;
